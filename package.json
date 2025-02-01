@@ -96,7 +96,8 @@
   ],
   "files": [
     "dist/*.*",
-    "index.d.ts"
+    "index.d.ts",
+    "index.d.cts"
   ],
   "dependencies": {
     "json-schema-ref-parser": "^6.1.0",

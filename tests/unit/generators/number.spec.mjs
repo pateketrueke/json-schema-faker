@@ -14,6 +14,13 @@ describe('Number Generator', () => {
     expect(n).not.to.eql(m);
   });
 
+  it('should return number with large minimum without specified maximum', () => {
+    const n = numberType({ minimum: 1682899200000 });
+
+    expect(n).to.be.a('number');
+    expect(n).to.be.at.least(1682899200000);
+  });
+
   it('should handle multipleOf on integers', () => {
     expect(isMultipleOf({ multipleOf: 1 })).to.be.true;
     expect(isMultipleOf({ multipleOf: 1, maximum: 1e+31 })).to.be.true;

@@ -2,8 +2,16 @@ import random from '../core/random.mjs';
 import env from '../core/constants.mjs';
 
 function numberType(value) {
-  let min = (typeof value.minimum === 'undefined' || value.minimum === -Number.MAX_VALUE) ? env.MIN_INTEGER : value.minimum;
-  let max = (typeof value.maximum === 'undefined' || value.maximum === Number.MAX_VALUE) ? env.MAX_INTEGER : value.maximum;
+  let min = (typeof value.minimum === 'undefined' || value.minimum === -Number.MAX_VALUE)
+    ? env.MIN_INTEGER
+    : value.minimum;
+  let max = (typeof value.maximum === 'undefined' || value.maximum === Number.MAX_VALUE)
+    ? env.MAX_INTEGER
+    : value.maximum;
+
+  if (min > max) {
+    max = Number.MAX_SAFE_INTEGER;
+  }
 
   const multipleOf = value.multipleOf;
   const decimals = multipleOf && String(multipleOf).match(/e-(\d)|\.(\d+)$/);
